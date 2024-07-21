@@ -3,7 +3,7 @@
     <SideNav />
     <div class="w-full h-full">
       <topNav />
-      <div>
+      <div class="w-full h-full">
         <slot />
       </div>
     </div>

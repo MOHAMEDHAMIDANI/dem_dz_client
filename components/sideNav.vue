@@ -8,7 +8,7 @@
             alt=""
           />
         </div>
-        <h3 class="text-2xl capitalize text-start text-blue-900 font-bold">
+        <h3 class="text-2xl capitalize text-start text-blue-500 font-bold">
           Mr.healthy
         </h3>
       </div>
@@ -21,7 +21,7 @@
               <div class="w-full h-10 flex justify-around items-center">
                 <div class="w-[70%] h-full flex justify-start items-center">
                   <Icon
-                    name="healthicons:inpatient"
+                    name="material-symbols-light:person"
                     size="30"
                     class="text-textGrey group-hover:text-white duration-300"
                   />
@@ -74,7 +74,7 @@
               <div class="w-full h-10 flex justify-around items-center">
                 <div class="w-[70%] h-full flex justify-start items-center">
                   <Icon
-                    name="healthicons:inpatient"
+                    name="material-symbols:inventory"
                     size="30"
                     class="text-textGrey group-hover:text-white duration-300"
                   />
@@ -123,7 +123,7 @@
           <li
             class="group w-[95%] hover:bg-mainBlue h-auto duration-300 rounded-sm"
           >
-            <nuxt-link to="/" class="w-full">
+            <nuxt-link to="patients/" class="w-full">
               <div class="w-full h-10 flex justify-around items-center">
                 <div class="w-[70%] h-full flex justify-start items-center">
                   <Icon
@@ -180,7 +180,7 @@
               <div class="w-full h-10 flex justify-around items-center">
                 <div class="w-[70%] h-full flex justify-start items-center">
                   <Icon
-                    name="healthicons:inpatient"
+                    name="cbi:roomslounge"
                     size="30"
                     class="text-textGrey group-hover:text-white duration-300"
                   />
@@ -233,7 +233,7 @@
               <div class="w-full h-10 flex justify-around items-center">
                 <div class="w-[70%] h-full flex justify-start items-center">
                   <Icon
-                    name="healthicons:inpatient"
+                    name="uis:window-section"
                     size="30"
                     class="text-textGrey group-hover:text-white duration-300"
                   />

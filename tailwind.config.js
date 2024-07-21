@@ -1,17 +1,22 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
+    "./index.html",
     "./components/**/*.{js,vue,ts}",
     "./layouts/**/*.vue",
     "./pages/**/*.vue",
     "./plugins/**/*.{js,ts}",
     "./app.vue",
     "./error.vue",
-    "./node_modules/flowbite/**/*.{js,ts}"
+    "./node_modules/flowbite/**/*.js",
+    "./node_modules/flowbite/**/*.{js,ts}",
+    './node_modules/preline/preline.js',
   ],
   plugins: [
-    require('flowbite/plugin')
+    require('flowbite/plugin'),
+    require('preline/plugin'),
   ],
+
   theme: {
     extend: {
       colors: {

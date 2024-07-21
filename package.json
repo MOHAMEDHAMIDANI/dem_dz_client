@@ -15,6 +15,7 @@
     "flowbite": "^2.4.1",
     "nuxt": "^3.12.3",
     "nuxt-primevue": "^3.0.0",
+    "preline": "^2.3.0",
     "primevue": "^4.0.0",
     "vue": "latest"
   },
