@@ -1,5 +1,5 @@
 <template>
-    <nav class="w-[300px] h-full min-h-screen bg-white shadow">
+    <nav class="w-[300px] h-full min-h-screen bg-white dark:bg-gray-800 shadow">
       <div class="w-full h-14 mb-5 flex justify-around items-center my-1">
         <div class="w-14 h-14">
           <img
@@ -8,7 +8,7 @@
             alt=""
           />
         </div>
-        <h3 class="text-2xl capitalize text-start text-blue-500 font-bold">
+        <h3 class="text-2xl capitalize text-start dark:text-white text-blue-500 font-bold">
           Mr.healthy
         </h3>
       </div>
@@ -39,7 +39,7 @@
               </div>
             </nuxt-link>
             <ul
-              class="w-full mb-1 bg-white hidden group-hover:flex flex-col items-center duration-300 ease-in-out"
+              class="w-full mb-1 bg-white dark:bg-gray-900 hidden group-hover:flex flex-col items-center duration-300 ease-in-out"
             >
               <li
                 v-for="item in data"
@@ -92,7 +92,7 @@
               </div>
             </nuxt-link>
             <ul
-              class="w-full mb-1 bg-white hidden group-hover:flex flex-col items-center duration-300 ease-in-out"
+              class="w-full mb-1 bg-white dark:bg-gray-900 hidden group-hover:flex flex-col items-center duration-300 ease-in-out"
             >
               <li
                 v-for="item in data"
@@ -145,7 +145,7 @@
               </div>
             </nuxt-link>
             <ul
-              class="w-full mb-1 bg-white hidden group-hover:flex flex-col items-center duration-300 ease-in-out"
+              class="w-full mb-1 bg-white dark:bg-gray-900 hidden group-hover:flex flex-col items-center duration-300 ease-in-out"
             >
               <li
                 v-for="item in data"
@@ -198,7 +198,7 @@
               </div>
             </nuxt-link>
             <ul
-              class="w-full mb-1 bg-white hidden group-hover:flex flex-col items-center duration-300 ease-in-out"
+              class="w-full mb-1 bg-white dark:bg-gray-900 hidden group-hover:flex flex-col items-center duration-300 ease-in-out"
             >
               <li
                 v-for="item in data"
@@ -251,7 +251,7 @@
               </div>
             </nuxt-link>
             <ul
-              class="w-full mb-1 bg-white hidden group-hover:flex flex-col items-center duration-300 ease-in-out"
+              class="w-full mb-1 bg-white dark:bg-gray-900 hidden group-hover:flex flex-col items-center duration-300 ease-in-out"
             >
               <li
                 v-for="item in data"

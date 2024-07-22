@@ -12,6 +12,8 @@
   "dependencies": {
     "@nuxt/icon": "^1.1.1",
     "@primevue/themes": "^4.0.0",
+    "@vueuse/core": "^10.11.0",
+    "@vueuse/nuxt": "^10.11.0",
     "flowbite": "^2.4.1",
     "nuxt": "^3.12.3",
     "nuxt-primevue": "^3.0.0",

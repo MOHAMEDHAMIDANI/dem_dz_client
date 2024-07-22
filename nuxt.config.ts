@@ -11,5 +11,5 @@ export default defineNuxtConfig({
     },
   },
   plugins: ["~/plugins/preline.client.ts"],
-  modules: ["@nuxt/icon",'@primevue/nuxt-module']
+  modules: ["@nuxt/icon",'@primevue/nuxt-module' , '@vueuse/nuxt',]
 })

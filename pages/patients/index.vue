@@ -1,6 +1,6 @@
 <template>
     <MainLay>
-        <div class="p-5 dark:bg-gray-900 antialiased ">
+        <div class="p-5 dark:bg-gray-900 antialiased h-full">
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <div class="pb-4 shadow-sm dark:bg-gray-900 flex justify-between items-center">
                     <label for="table-search" class="sr-only">Search</label>

@@ -4,18 +4,19 @@
 
 ::-webkit-scrollbar {
     width: 8px;
-    border-radius: 20px;
+    background-color:  !important;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
     -ms-border-radius: 20px;
     -o-border-radius: 20px;
+    border-radius: 20px;
 }
 ::-webkit-scrollbar-thumb {
     width: 8px;
     background: rgb(0, 30, 107);
-    border-radius: 20px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
     -ms-border-radius: 20px;
     -o-border-radius: 20px;
+    border-radius: 20px;
 }
