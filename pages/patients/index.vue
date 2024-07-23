@@ -18,9 +18,11 @@
                             placeholder="Search for items">
                     </div>
                     <nuxt-link to="patients/createPatient">
-                    <button type="button" class=" focus:outline-none outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-2 focus:ring-green-500 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mx-2 flex items-center capitalize"> 
-                        <Icon name="ic:round-plus" size="20"/>
-                        add patients</button>
+                        <button type="button"
+                            class=" focus:outline-none outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-2 focus:ring-green-500 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mx-2 flex items-center capitalize">
+                            <Icon name="ic:round-plus" size="20" />
+                            add patients
+                        </button>
                     </nuxt-link>
                 </div>
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -50,104 +52,31 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr
-                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <tr class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <th scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Apple MacBook Pro 17"
+                                <NuxtLink :to="{name: 'patients-patientsDetails-id', params: {id: '1'}}">Apple iMac 27</NuxtLink>
                             </th>
                             <td class="px-6 py-4">
                                 Silver
                             </td>
                             <td class="px-6 py-4">
-                                Laptop
+                                PC Desktop
                             </td>
                             <td class="px-6 py-4">
-                                $2999
-                            </td>
-                            <td class="px-6 py-4">
-                                <a href="#"
-                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                            </td>
-                        </tr>
-                        <tr
-                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Microsoft Surface Pro
-                            </th>
-                            <td class="px-6 py-4">
-                                White
-                            </td>
-                            <td class="px-6 py-4">
-                                Laptop PC
-                            </td>
-                            <td class="px-6 py-4">
-                                $1999
+                                $3999
                             </td>
                             <td class="px-6 py-4">
                                 <a href="#"
                                     class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                             </td>
-                        </tr>
-                        <tr
-                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Magic Mouse 2
-                            </th>
                             <td class="px-6 py-4">
-                                Black
-                            </td>
-                            <td class="px-6 py-4">
-                                Accessories
-                            </td>
-                            <td class="px-6 py-4">
-                                $99
+                                <a href="#"
+                                    class="font-medium text-red-600 dark:text-red-500 hover:underline">delete</a>
                             </td>
                             <td class="px-6 py-4">
                                 <a href="#"
-                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                            </td>
-                        </tr>
-                        <tr
-                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Apple Watch
-                            </th>
-                            <td class="px-6 py-4">
-                                Silver
-                            </td>
-                            <td class="px-6 py-4">
-                                Accessories
-                            </td>
-                            <td class="px-6 py-4">
-                                $179
-                            </td>
-                            <td class="px-6 py-4">
-                                <a href="#"
-                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                            </td>
-                        </tr>
-                        <tr
-                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                iPad
-                            </th>
-                            <td class="px-6 py-4">
-                                Gold
-                            </td>
-                            <td class="px-6 py-4">
-                                Tablet
-                            </td>
-                            <td class="px-6 py-4">
-                                $699
-                            </td>
-                            <td class="px-6 py-4">
-                                <a href="#"
-                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                    class="font-medium text-green-600 dark:text-green-500 hover:underline">archive</a>
                             </td>
                         </tr>
                         <tr class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -169,11 +98,11 @@
                                     class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                             </td>
                             <td class="px-6 py-4">
-                                    <a href="#"
+                                <a href="#"
                                     class="font-medium text-red-600 dark:text-red-500 hover:underline">delete</a>
                             </td>
                             <td class="px-6 py-4">
-                                    <a href="#"
+                                <a href="#"
                                     class="font-medium text-green-600 dark:text-green-500 hover:underline">archive</a>
                             </td>
                         </tr>
@@ -187,6 +116,7 @@
 
 <script setup lang="ts">
 import MainLay from '~/layouts/mainLay.vue';
+import type Id from './details/[id].vue';
 
 
 </script>
