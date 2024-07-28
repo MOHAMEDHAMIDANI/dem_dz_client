@@ -5,7 +5,9 @@ import axios from 'axios'
 export default defineNuxtPlugin((nuxtApp) => {
     const axiosInstance = axios.create({
         baseURL: 'http://localhost:3000/',
+        withCredentials: true 
     })
+
     axiosInstance.interceptors.request.use((config) => {
         return config
     }, (error) => {
@@ -17,5 +19,6 @@ export default defineNuxtPlugin((nuxtApp) => {
     }, (error) => {
         return Promise.reject(error)
     })
+
     nuxtApp.provide('axios', axiosInstance)
 })
