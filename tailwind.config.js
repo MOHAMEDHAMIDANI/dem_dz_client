@@ -27,7 +27,10 @@ export default {
         "textHover": "rgb(142,173,255)",
         "textGrey": "rgb(170,178,190)",
 
-      }
+      },
+      fontFamily: {
+        'Lora': ['Lora', 'serif'],
+      },
     },
   },
   plugins: [],

@@ -103,7 +103,7 @@
 const ifNotification = ref(false)
 const ifMessage = ref(false)
 const ifOpen = ref(false)
-
+const userStore = useUserStore()
 
 </script>
 

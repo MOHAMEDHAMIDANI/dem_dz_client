@@ -46,7 +46,8 @@
                 <div class="w-full h-[65%] rounded-lg bg-white shadow-lg dark:bg-gray-700 overflow-hidden">
                     <div class="w-full px-5 h-10 dark:text-white flex justify-between items-center">
                         <h3 class="capitalize text-lg font-medium">details</h3>
-                        <Icon name="material-symbols-light:person-edit-outline-sharp" size="35" class="text-blue-500 cursor-pointer" @click="validated = !validated" />
+                        <Icon name="material-symbols-light:person-edit-outline-sharp" size="35"
+                            class="text-blue-500 cursor-pointer" @click="validated = !validated" />
                     </div>
                     <form class="p-5">
                         <div class="grid gap-6 mb-6 md:grid-cols-2">
@@ -54,7 +55,8 @@
                                 <label for="first_name"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
                                     name</label>
-                                <input type="text" id="first_name" :disabled=validated :class="validated ? 'cursor-not-allowed' : 'cursor-text' " v-model="firstName"
+                                <input type="text" id="first_name" :disabled=validated
+                                    :class="validated ? 'cursor-not-allowed' : 'cursor-text'" v-model="firstName"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="John" required />
                             </div>
@@ -62,7 +64,8 @@
                                 <label for="last_name"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last
                                     name</label>
-                                <input type="text" id="last_name" :disabled=validated :class="validated ? 'cursor-not-allowed' : 'cursor-text' " v-model="lastName"
+                                <input type="text" id="last_name" :disabled=validated
+                                    :class="validated ? 'cursor-not-allowed' : 'cursor-text'" v-model="lastName"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Doe" required />
                             </div>
@@ -70,7 +73,8 @@
                                 <label for="phone"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone
                                     number</label>
-                                <input type="tel" id="phone" :disabled=validated :class="validated ? 'cursor-not-allowed' : 'cursor-text' " v-model="phone"
+                                <input type="tel" id="phone" :disabled=validated
+                                    :class="validated ? 'cursor-not-allowed' : 'cursor-text'" v-model="phone"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="123-45-678" pattern="^(00213|\+213|0)(5|6|7)[0-9]{8}$" required />
                             </div>
@@ -79,7 +83,8 @@
                             <label for="email"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email
                                 address</label>
-                            <input type="email" id="email" :disabled=validated :class="validated ? 'cursor-not-allowed' : 'cursor-text' " v-model="email"
+                            <input type="email" id="email" :disabled=validated
+                                :class="validated ? 'cursor-not-allowed' : 'cursor-text'" v-model="email"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="john.doe@company.com" required />
                         </div>
@@ -88,51 +93,53 @@
                     </form>
                 </div>
             </div>
-            <div class=" flex justify-center items-center max-w-md w-full md:inset-0">
-                <div class="p-4 w-full max-w-md max-h-full">
-                    <div class="bg-white rounded-lg shadow dark:bg-gray-700">
-                        <div
-                            class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                            <h3 class="capitalize text-xl font-semibold text-gray-900 dark:text-white">
-                                change your password
-                            </h3>
-                        </div>
-                        <div class="p-4 md:p-5">
-                            <form class=" flex flex-col gap-2" action="#">
-                                <div>
-                                    <label for="email"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white capitalize">Your
-                                        email</label>
-                                    <input type="email" name="email" id="email"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                        placeholder="name@company.com" required />
-                                </div>
-                                <div>
-                                    <label for="password"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white capitalize">new
-                                        password</label>
-                                    <input type="password" name="password" id="password" placeholder="••••••••"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                        required />
-                                </div>
-                                <div>
-                                    <label for="password"
-                                        class="block capitalize mb-2 text-sm font-medium text-gray-900 dark:text-white">rewrite
-                                        the
-                                        new
-                                        password</label>
-                                    <input type="password" name="password" id="password" placeholder="••••••••" 
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                        required />
-                                </div>
-                                <button type="submit"
-                                    class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 capitalize">
-                                    change password</button>
-                            </form>
+            <transition>
+                <div v-if="!validated" class=" flex justify-center items-center max-w-md w-full md:inset-0">
+                    <div class="p-4 w-full max-w-md max-h-full">
+                        <div class="bg-white rounded-lg shadow dark:bg-gray-700">
+                            <div
+                                class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                <h3 class="capitalize text-xl font-semibold text-gray-900 dark:text-white">
+                                    change your password
+                                </h3>
+                            </div>
+                            <div class="p-4 md:p-5">
+                                <form class=" flex flex-col gap-2" action="#">
+                                    <div>
+                                        <label for="email"
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white capitalize">Your
+                                            email</label>
+                                        <input type="email" name="email" id="email"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                            placeholder="name@company.com" required />
+                                    </div>
+                                    <div>
+                                        <label for="password"
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white capitalize">new
+                                            password</label>
+                                        <input type="password" name="password" id="password" placeholder="••••••••"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                            required />
+                                    </div>
+                                    <div>
+                                        <label for="password"
+                                            class="block capitalize mb-2 text-sm font-medium text-gray-900 dark:text-white">rewrite
+                                            the
+                                            new
+                                            password</label>
+                                        <input type="password" name="password" id="password" placeholder="••••••••"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                            required />
+                                    </div>
+                                    <button type="submit"
+                                        class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 capitalize">
+                                        change password</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </transition>
         </div>
     </MainLay>
 </template>
@@ -141,10 +148,20 @@
 import MainLay from '~/layouts/mainLay.vue';
 const validated = ref(true)
 const email = ref('mohamede@gmail.com')
-const firstName = ref( 'mohamed')
-const lastName = ref( 'hamidani')
+const firstName = ref('mohamed')
+const lastName = ref('hamidani')
 const phone = ref('123456789')
 
 </script>
 
-<style scoped></style>
+<style scoped>
+.v-enter-active,
+.v-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+    opacity: 0;
+}
+</style>
