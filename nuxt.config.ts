@@ -19,6 +19,5 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
-    "@dargmuesli/nuxt-cookie-control",
   ]
 })

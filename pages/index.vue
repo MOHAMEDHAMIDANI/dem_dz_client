@@ -59,12 +59,11 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useNuxtApp } from '#app'
-import { useUserStore } from '~/stores/user' // Adjust the import path as needed
-import { getCookie } from '~/utils/cookies';
+import { useUserStore } from '~/stores/user'
 const username = ref('')
 const password = ref('')
-const rememberMe = ref(false) // Add ref for the remember me checkbox
-const errorMessage = ref('') // Add ref for error message
+const rememberMe = ref(false)
+const errorMessage = ref('')
 
 const userStore = useUserStore()
 const router = useRouter()
@@ -73,19 +72,18 @@ const customAxios = $axios.create({
     withCredentials: true,
 });
 const login = async () => {
-    userStore.isLoggedIn = true;
     userStore.wait = true
     try {
         const response = await customAxios.post('auth/login', {
             username: username.value,
             password: password.value
         })
-        console.log(response)
-        userStore.user = response.data
-        const accessToken = getCookie('access_token');
-        console.log(accessToken)
-        if (accessToken) {
-            // Redirect or perform any other action as needed
+        const cookie = useCookie('access_token')
+        if (cookie) {
+            userStore.user = response.data
+            userStore.rememberMe = rememberMe.value
+            userStore.isLoggedIn = true;
+            console.log(cookie.value)
             router.push('/patients')
         } else {
             console.error('Access token not found in cookies')
@@ -94,12 +92,14 @@ const login = async () => {
         userStore.errorType = 3
         userStore.message = error.message
     } finally {
+        console.log(userStore)
         setTimeout(() => {
             userStore.wait = false
             errorMessage.value = ''
         }, 10000)
     }
 }
+
 </script>
 
 <style scoped></style>

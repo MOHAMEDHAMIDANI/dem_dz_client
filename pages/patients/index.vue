@@ -116,8 +116,10 @@
 
 <script setup lang="ts">
 import MainLay from '~/layouts/mainLay.vue';
-import type Id from './details/[id].vue';
-
+onBeforeMount(() => {
+    const token = useCookie('access_token')
+    console.log('token from page patients ' , typeof(token))
+})
 
 </script>
 
