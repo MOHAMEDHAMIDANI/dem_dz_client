@@ -25,12 +25,11 @@
                         class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
                 </li>
             </ul>
-            <div class="py-1">
+            <div class="py-1" @click="logOut">
                 <a href="#"
                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
                     out</a>
             </div>
-            <h3> {{ token }}</h3>
         </div>
 
     </div>
@@ -39,6 +38,17 @@
 <script setup lang="ts">
 
 const userStore = useUserStore();
+const router = useRouter()
+const logOut = async() => {
+    try {
+        userStore.logOutUser();
+        userStore.$reset()
+        router.push("/")
+    } catch (error) {
+        console.log(error)
+        userStore.displayErrorMessage(3 , error.message)
+    }
+}
 </script>
 
 <style lang="scss" scoped></style>

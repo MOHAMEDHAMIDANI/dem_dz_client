@@ -63,38 +63,24 @@ import { useUserStore } from '~/stores/user'
 const username = ref('')
 const password = ref('')
 const rememberMe = ref(false)
-const errorMessage = ref('')
 const userStore = useUserStore()
-const router = useRouter()
-const { $axios } = useNuxtApp()
-const customAxios = $axios.create({
-    withCredentials: true,
-});
 const login = async () => {
     userStore.wait = true
     try {
-        const response = await customAxios.post('auth/login', {
-            username: username.value,
-            password: password.value
-        })
+        await userStore.loginUser(username.value, password.value , rememberMe.value)
         const cookie = useCookie('access_token')
         if (cookie) {
-            userStore.user = response.data
             console.log(userStore.user)
-            userStore.rememberMe = rememberMe.value
-            userStore.isLoggedIn = true;
-            router.push('/patients')
+            userStore.displayErrorMessage(3 , 'Login successful')
+            setTimeout(() => {
+                navigateTo('/patients')
+            }, );
         } else {
             console.error('Access token not found in cookies')
         }
     } catch (error) {
-        userStore.errorType = 3
-        userStore.message = error.message
-    } finally {
-        setTimeout(() => {
-            userStore.wait = false
-            errorMessage.value = ''
-        }, 10000)
+        console.log(error)
+        userStore.displayErrorMessage(3 , error.message)
     }
 }
 
