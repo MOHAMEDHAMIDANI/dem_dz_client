@@ -3,8 +3,8 @@
   "private": true,
   "type": "module",
   "overrides": {
-    "vue": "latest"
-  },
+  "vue": "latest"
+},
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev --port 3001",

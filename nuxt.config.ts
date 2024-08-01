@@ -12,6 +12,7 @@ export default defineNuxtConfig({
   },
   plugins: [
     '~/plugins/axios.ts',
+    '~/plugins/pinia-plugin.ts'
   ],
   modules: [
     "@nuxt/icon",

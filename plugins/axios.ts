@@ -1,4 +1,3 @@
-// plugins/axios.ts
 import { defineNuxtPlugin } from '#app'
 import axios from 'axios'
 

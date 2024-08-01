@@ -64,7 +64,6 @@ const username = ref('')
 const password = ref('')
 const rememberMe = ref(false)
 const errorMessage = ref('')
-
 const userStore = useUserStore()
 const router = useRouter()
 const { $axios } = useNuxtApp()
@@ -81,9 +80,9 @@ const login = async () => {
         const cookie = useCookie('access_token')
         if (cookie) {
             userStore.user = response.data
+            console.log(userStore.user)
             userStore.rememberMe = rememberMe.value
             userStore.isLoggedIn = true;
-            console.log(cookie.value)
             router.push('/patients')
         } else {
             console.error('Access token not found in cookies')
@@ -92,7 +91,6 @@ const login = async () => {
         userStore.errorType = 3
         userStore.message = error.message
     } finally {
-        console.log(userStore)
         setTimeout(() => {
             userStore.wait = false
             errorMessage.value = ''
