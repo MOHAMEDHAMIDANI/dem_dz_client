@@ -53,7 +53,7 @@ export const useUserStore = defineStore('user', {
             this.message = message;
             setTimeout(() => {
                 this.wait = false;
-            }, 5000);
+            }, 10000);
         },
         async getRooms(): Promise<Room[] | undefined> {
             const { $axios } = useNuxtApp();
@@ -69,7 +69,7 @@ export const useUserStore = defineStore('user', {
                 return [];
             }
         } , 
-        async createPAtient (createPAtientDto : CreatePatientDto , roomId : string , bedId : string) {
+        async createPatient (createPAtientDto : CreatePatientDto , roomId : string , bedId : string) {
             const { $axios } = useNuxtApp();
             try {
                 const response = await $axios.post(`/patients/${roomId}`, createPAtientDto ,  {
@@ -96,6 +96,33 @@ export const useUserStore = defineStore('user', {
             } catch (error) {
                 console.error(error);
                 return [];
+            }
+        },
+        async getAllApproved(): Promise<Patient[] | undefined> {
+            const { $axios } = useNuxtApp();
+            try {
+                const response = await $axios.get('/patients/approved', {
+                    headers: {
+                        'Authorization': `Bearer ${this.access_token}`
+                    }
+                });
+                return response.data;
+            } catch (error) {
+                console.error(error);
+            }
+        },
+        async acceptPatient (patientId : string) {
+            const { $axios } = useNuxtApp();
+            try {
+                const response = await $axios.post(`/patients/${patientId}/approve`, {} ,  {
+                    headers: {
+                        'Authorization': `Bearer ${this.access_token}`
+                    },
+                });
+                console.log(response.data)
+                return response.data;
+            } catch (error) {
+                console.error(error);
             }
         }
     },

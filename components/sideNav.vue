@@ -1,5 +1,5 @@
 <template>
-    <nav class="w-[300px] h-full min-h-screen bg-white dark:bg-gray-800 shadow">
+    <nav class="w-[270px] min-h-screen bg-white dark:bg-gray-800 shadow">
       <div class="w-full h-14 mb-5 flex justify-around items-center my-1">
         <div class="w-14 h-14">
           <img
@@ -12,7 +12,7 @@
           Mr.healthy
         </h3>
       </div>
-      <div class="h-[100%] max-h-screen overflow-scroll">
+      <div class="h-full min-h-screen overflow-scroll">
         <ul class="w-full flex flex-col items-center space-y-2">
           <li
             class="group w-[95%] hover:bg-mainBlue h-auto duration-300 rounded-sm"
@@ -26,7 +26,7 @@
                     class="text-textGrey group-hover:text-white duration-300"
                   />
                   <h3
-                    class="group-hover:text-white ml-2 capitalize text-lg text-textGrey duration-300"
+                    class="group-hover:text-white  ml-2 capitalize text-lg text-textGrey duration-300"
                   >
                     Users
                   </h3>
@@ -185,7 +185,7 @@
                     class="text-textGrey group-hover:text-white duration-300"
                   />
                   <h3
-                    class="group-hover:text-white ml-2 capitalize text-lg text-textGrey duration-300"
+                    class="group-hover:text-white ml-2 PY-2\ capitalize text-md text-textGrey duration-300"
                   >
                     Rooms & Beds
                   </h3>
@@ -279,6 +279,7 @@
               </li>
             </ul>
           </li>
+          
         </ul>
       </div>
     </nav>

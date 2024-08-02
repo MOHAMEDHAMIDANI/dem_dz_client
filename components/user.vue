@@ -24,6 +24,10 @@
                     <a href="#"
                         class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
                 </li>
+                <li>
+                    <nuxtLink to="patients/pending"
+                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white capitalize">pending requests </nuxtLink>
+                </li>
             </ul>
             <div class="py-1" @click="logOut">
                 <a href="#"

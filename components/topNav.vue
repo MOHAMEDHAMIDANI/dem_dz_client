@@ -1,7 +1,7 @@
 <template>
     <div class="w-full h-16 dark:bg-gray-800 bg-white shadow-sm">
         <div class="w-full h-full flex justify-between items-center">
-            <form class="max-w-lg w-full mx-auto">
+            <form class="max-w-lg w-full mx-auto bg-re">
                 <div class="flex relative">
                     <label for="search-dropdown"
                         class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Your Email</label>

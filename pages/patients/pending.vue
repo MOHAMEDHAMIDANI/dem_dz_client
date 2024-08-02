@@ -44,13 +44,9 @@
                                 bed num
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Edit
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Delete
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Archive
+                                
                             </th>
                         </tr>
                     </thead>
@@ -75,16 +71,12 @@
                                 {{ patient.bed.index }}
                             </td>
                             <td class="px-6 py-4">
-                                <nuxtLink :to="{ name: 'patients-patientsDetails-id', params: { id: patient.id } }" href="#"
-                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</nuxtLink>
+                                <a href="#"
+                                    class="font-medium text-red-600 dark:text-red-500 hover:underline">deny</a>
                             </td>
                             <td class="px-6 py-4">
                                 <a href="#"
-                                    class="font-medium text-red-600 dark:text-red-500 hover:underline">delete</a>
-                            </td>
-                            <td class="px-6 py-4">
-                                <a href="#"
-                                    class="font-medium text-green-600 dark:text-green-500 hover:underline">archive</a>
+                                    class="font-medium text-green-600 dark:text-green-500 hover:underline" @click="acceptPatient(patient.id)">approve</a>
                             </td>
                         </tr>
                     </tbody>
@@ -100,7 +92,12 @@ import type { Patient } from '~/types';
 
 const userStore = useUserStore();
 const patients = ref<Patient[]>([]);
+const acceptPatient = async (patientId : string) => {
+    console.log(patientId);
+    await userStore.acceptPatient(patientId)
+    patients.value = await userStore.getPatients() || [];
 
+}
 onBeforeMount(async () => {
     patients.value = await userStore.getPatients() || [];
     console.log('patients:', patients.value);

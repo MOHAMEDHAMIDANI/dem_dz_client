@@ -3,9 +3,10 @@
 <template>
     <div class="w-full h-screen">
         <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-            <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-                <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your
+            <div class="sm:mx-auto sm:w-full sm:max-w-sm flex justify-between items-center ">
+                <h2 class="text-center h-fit dark:text-white text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your
                     account</h2>
+                    <toggle-dark />
             </div>
 
             <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -14,7 +15,7 @@
                         <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Username</label>
                         <div class="mt-2">
                             <input id="username" name="username" type="text" required v-model="username"
-                                class="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                class="block w-full rounded-md border-0 py-1.5 px-1.5  dark:text-white text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         </div>
                     </div>
 
@@ -29,8 +30,8 @@
                         </div>
                         <div class="mt-2">
                             <input id="password" name="password" type="password" autocomplete="current-password"
-                                required v-model="password"
-                                class="block w-full rounded-md border-0 px-1.5 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                required v-model="password" 
+                                class="block w-full rounded-md border-0 dark:text-white px-1.5 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         </div>
                     </div>
 
@@ -69,7 +70,7 @@ const login = async () => {
     try {
         await userStore.loginUser(username.value, password.value , rememberMe.value)
         const cookie = useCookie('access_token')
-        if (cookie) {
+        if (cookie.value) {
             console.log(userStore.user)
             userStore.displayErrorMessage(3 , 'Login successful')
             setTimeout(() => {
@@ -80,7 +81,6 @@ const login = async () => {
         }
     } catch (error) {
         console.log(error)
-        userStore.displayErrorMessage(3 , error.message)
     }
 }
 

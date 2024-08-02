@@ -109,6 +109,8 @@ export interface CreatePatientDto {
     sickGuard?: string;
     dateOfEntry: Date;
     dateOfBirth?: Date;
+    description : string ; 
+    SickGuardPhone? : string ;
 }
 // Patient.interface.ts
 export interface Patient {
@@ -167,6 +169,7 @@ export interface ExaminationReport {
 export interface Bed {
     id: string;
     room: Room;
+    index: number;
     patient: Patient;
     createdAt: string;
     updatedAt: string;
