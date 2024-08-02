@@ -19,7 +19,7 @@
                     </div>
                     <nuxt-link to="patients/createPatient">
                         <button type="button"
-                            class=" focus:outline-none outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-2 focus:ring-green-500 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mx-2 flex items-center capitalize">
+                            class="focus:outline-none outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-2 focus:ring-green-500 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mx-2 flex items-center capitalize">
                             <Icon name="ic:round-plus" size="20" />
                             add patients
                         </button>
@@ -41,6 +41,9 @@
                                 room
                             </th>
                             <th scope="col" class="px-6 py-3">
+                                bed num
+                            </th>
+                            <th scope="col" class="px-6 py-3">
                                 Edit
                             </th>
                             <th scope="col" class="px-6 py-3">
@@ -52,46 +55,24 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <tr class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600"
+                            v-for="(patient, index) in patients" :key="index">
                             <th scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                <NuxtLink :to="{name: 'patients-patientsDetails-id', params: {id: '1'}}">Apple iMac 27</NuxtLink>
+                                <NuxtLink :to="{ name: 'patients-patientsDetails-id', params: { id: patient.id } }">{{
+                                    patient.name + ' ' + patient.familyName }}</NuxtLink>
                             </th>
                             <td class="px-6 py-4">
-                                Silver
+                                {{ patient.gender }}
                             </td>
                             <td class="px-6 py-4">
-                                PC Desktop
+                                {{ patient.section }}
                             </td>
                             <td class="px-6 py-4">
-                                $3999
+                                {{ patient.room }}
                             </td>
                             <td class="px-6 py-4">
-                                <a href="#"
-                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                            </td>
-                            <td class="px-6 py-4">
-                                <a href="#"
-                                    class="font-medium text-red-600 dark:text-red-500 hover:underline">delete</a>
-                            </td>
-                            <td class="px-6 py-4">
-                                <a href="#"
-                                    class="font-medium text-green-600 dark:text-green-500 hover:underline">archive</a>
-                            </td>
-                        </tr>
-                        <tr class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Apple iMac 27"
-                            </th>
-                            <td class="px-6 py-4">
-                                Silver
-                            </td>
-                            <td class="px-6 py-4">
-                                PC Desktop
-                            </td>
-                            <td class="px-6 py-4">
-                                $3999
+                                {{ patient.bed }}
                             </td>
                             <td class="px-6 py-4">
                                 <a href="#"
@@ -109,13 +90,21 @@
                     </tbody>
                 </table>
             </div>
-
         </div>
     </MainLay>
 </template>
 
 <script setup lang="ts">
 import MainLay from '~/layouts/mainLay.vue';
+import type { Patient } from '~/types';
+
+const userStore = useUserStore();
+const patients = ref<Patient[]>([]);
+
+onBeforeMount(async () => {
+    patients.value = await userStore.getPatients() || [];
+    console.log('patients:', patients.value);
+});
 </script>
 
 <style scoped></style>

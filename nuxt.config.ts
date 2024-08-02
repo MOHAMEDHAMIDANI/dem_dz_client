@@ -15,6 +15,7 @@ export default defineNuxtConfig({
     '~/plugins/pinia-plugin.ts'
   ],
   modules: [
+    '@nuxt/ui',
     "@nuxt/icon",
     '@primevue/nuxt-module',
     '@vueuse/nuxt',

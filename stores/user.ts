@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import type { User } from '~/types';
+import type { CreatePatientDto, Patient, Room, User } from '~/types';
 import { useNuxtApp } from '#app';
 
 export const useUserStore = defineStore('user', {
@@ -11,6 +11,8 @@ export const useUserStore = defineStore('user', {
             isLoggedIn: false as boolean,
             rememberMe: false as boolean,
             user: {} as User,
+            access_token : useCookie('access_token'),
+            refresh_token : useCookie('refresh_token')
         }
     },
     actions: {
@@ -52,6 +54,49 @@ export const useUserStore = defineStore('user', {
             setTimeout(() => {
                 this.wait = false;
             }, 5000);
+        },
+        async getRooms(): Promise<Room[] | undefined> {
+            const { $axios } = useNuxtApp();
+            try {
+                const response = await $axios.get('/room', {
+                    headers: {
+                        'Authorization': `Bearer ${this.access_token}`
+                    }
+                });
+                return response.data;
+            } catch (error) {
+                console.error(error);
+                return [];
+            }
+        } , 
+        async createPAtient (createPAtientDto : CreatePatientDto , roomId : string , bedId : string) {
+            const { $axios } = useNuxtApp();
+            try {
+                const response = await $axios.post(`/patients/${roomId}`, createPAtientDto ,  {
+                    headers: {
+                        'Authorization': `Bearer ${this.access_token}`
+                    },
+                });
+                console.log(response.data)
+                return response.data;
+            } catch (error) {
+                console.error(error);
+                return [];
+            }
+        },
+        async getPatients() : Promise<Patient[] | undefined> {
+            const { $axios } = useNuxtApp();
+            try {
+                const response = await $axios.get('/patients', {
+                    headers: {
+                        'Authorization': `Bearer ${this.access_token}`
+                    }
+                });
+                return response.data;
+            } catch (error) {
+                console.error(error);
+                return [];
+            }
         }
     },
     persist: {

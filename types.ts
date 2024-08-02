@@ -102,7 +102,14 @@ export interface Room {
     createdAt: string;
     updatedAt: string;
 }
-
+export interface CreatePatientDto {
+    name: string;
+    familyName: string;
+    gender?: GenderEnum;
+    sickGuard?: string;
+    dateOfEntry: Date;
+    dateOfBirth?: Date;
+}
 // Patient.interface.ts
 export interface Patient {
     id: string;
