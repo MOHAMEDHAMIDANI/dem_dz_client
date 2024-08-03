@@ -62,21 +62,11 @@
                         <!-- Dropdown menu -->
                         <div id="userDropdown"
                             class="z-10 hidden  border-white group-hover:flex flex-col absolute top-14 right-2 bg-white divide-y divide-gray-100 rounded-lg shadow w-[300px] max-h-[350px] overflow-auto dark:bg-gray-700 dark:divide-gray-600">
-                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200 flex flex-col gap-2"
+                            <div class="py-2 text-sm text-gray-700 dark:text-gray-200 flex flex-col gap-2"
                                 aria-labelledby="avatarButton">
-                                <li>
                                     <notification />
-                                </li>
-                                <li>
-                                    <notification />
-                                </li>
-                                <li>
-                                    <notification />
-                                </li>
-                                <li>
-                                    <notification />
-                                </li>
-                            </ul>
+
+                            </div>
                         </div>
                     </div>
                     <div class="w-16 cursor-pointer h-full relative group flex justify-center items-center">

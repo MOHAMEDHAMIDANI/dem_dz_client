@@ -24,6 +24,7 @@
     "nuxt": "^3.12.3",
     "pinia": "^2.2.0",
     "preline": "^2.3.0",
+    "socket.io-client": "^4.7.5",
     "v-calendar": "^3.1.2",
     "vue": "latest"
   },

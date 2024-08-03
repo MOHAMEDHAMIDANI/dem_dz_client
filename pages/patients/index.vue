@@ -54,9 +54,9 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr class="text-left bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600"
-                            v-for="(patient, index) in patients" :key="index">
+                    <tbody v-for="(patient, index) in patients" :key="index">
+                        <tr v-if="patient.approvalStatus === 'approved'" class="text-left bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600"
+                            >
                             <th scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 <NuxtLink :to="{ name: 'patients-patientsDetails-id', params: { id: patient.id } }">{{

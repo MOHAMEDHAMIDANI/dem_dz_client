@@ -98,19 +98,6 @@ export const useUserStore = defineStore('user', {
                 return [];
             }
         },
-        async getAllApproved(): Promise<Patient[] | undefined> {
-            const { $axios } = useNuxtApp();
-            try {
-                const response = await $axios.get('/patients/approved', {
-                    headers: {
-                        'Authorization': `Bearer ${this.access_token}`
-                    }
-                });
-                return response.data;
-            } catch (error) {
-                console.error(error);
-            }
-        },
         async acceptPatient (patientId : string) {
             const { $axios } = useNuxtApp();
             try {
@@ -124,7 +111,7 @@ export const useUserStore = defineStore('user', {
             } catch (error) {
                 console.error(error);
             }
-        }
+        },
     },
     persist: {
         storage: persistedState.cookiesWithOptions({
