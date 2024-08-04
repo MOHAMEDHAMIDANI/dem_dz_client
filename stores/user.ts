@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import type { CreatePatientDto, Patient, Room, User } from '~/types';
-import { useNuxtApp } from '#app';
+import { useNuxtApp, type CookieRef } from '#app';
 
 export const useUserStore = defineStore('user', {
     state: () => {
@@ -11,8 +11,9 @@ export const useUserStore = defineStore('user', {
             isLoggedIn: false as boolean,
             rememberMe: false as boolean,
             user: {} as User,
-            access_token : useCookie('access_token'),
-            refresh_token : useCookie('refresh_token')
+            access_token: '' as unknown as CookieRef<string | null | undefined>,
+            refresh_token: '' as unknown as CookieRef<string | null | undefined>,
+            
         }
     },
     actions: {
@@ -29,6 +30,11 @@ export const useUserStore = defineStore('user', {
             this.wait = true;
             try {
                 const response = await $axios.post('/auth/login', { username, password });
+                this.access_token = useCookie('access_token');
+                this.refresh_token = useCookie('refresh_token');
+                console.log(this.access_token);
+                console.log(this.refresh_token);
+                
                 this.user = response.data;
                 this.isLoggedIn = true;
                 this.rememberMe = rememberMe || false;
