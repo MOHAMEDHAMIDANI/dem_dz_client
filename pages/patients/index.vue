@@ -99,11 +99,18 @@ import MainLay from '~/layouts/mainLay.vue';
 import type { Patient } from '~/types';
 
 const userStore = useUserStore();
+const notificationStore = useNotificationStore();
 const patients = ref<Patient[]>([]);
 
 onBeforeMount(async () => {
+    console.log(userStore);
     patients.value = await userStore.getPatients() || [];
-    console.log('patients:', patients.value);
+    notificationStore.getAllNotifications()
+    notificationStore.getUnread()
+});
+onMounted(() => {
+    console.log(userStore);
+    console.log(userStore.user)
 });
 </script>
 

@@ -5,7 +5,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
     if (import.meta.server) return
     console.log('auth middleware fired')
 
-    const userStore = useUserStore()
+    const userStore = useAuthStore()
 
     if (!userStore.isLoggedIn && to.path !== '/') {
         return navigateTo('/')

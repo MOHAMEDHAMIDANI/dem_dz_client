@@ -1,48 +1,32 @@
 import { defineStore } from 'pinia'
 import type { CreatePatientDto, Patient, Room, User } from '~/types';
 import { useNuxtApp, type CookieRef } from '#app';
-
 export const useUserStore = defineStore('user', {
     state: () => {
         return {
             wait: false as boolean,
             errorType: 1 as number,
             message: '' as string,
-            isLoggedIn: false as boolean,
-            rememberMe: false as boolean,
             user: {} as User,
-            access_token: '' as unknown as CookieRef<string | null | undefined>,
-            refresh_token: '' as unknown as CookieRef<string | null | undefined>,
-            
         }
     },
     actions: {
         $reset() {
-            this.wait = false;
-            this.errorType = 0;
-            this.message = '';
-            this.isLoggedIn = false;
-            this.rememberMe = false;
             this.user = {} as User;
         },
-        async loginUser(username: string, password: string, rememberMe: boolean) {
+        async loginUser(username: string, password: string, rememberMe : boolean) { 
             const { $axios } = useNuxtApp();
-            this.wait = true;
+            const authUser = useAuthStore()    
             try {
+                this.wait = true;
                 const response = await $axios.post('/auth/login', { username, password });
-                this.access_token = useCookie('access_token');
-                this.refresh_token = useCookie('refresh_token');
-                console.log(this.access_token);
-                console.log(this.refresh_token);
-                
                 this.user = response.data;
-                this.isLoggedIn = true;
-                this.rememberMe = rememberMe || false;
+                authUser.setTokens()
+                authUser.setRememberMe(rememberMe)
+                authUser.setLoginStatus(true)
             } catch (error) {
                 console.log(error);
                 this.displayErrorMessage(2, 'Login failed');
-            } finally {
-                this.wait = false;
             }
         },
         async logOutUser() {
@@ -50,6 +34,7 @@ export const useUserStore = defineStore('user', {
             try {
                 await $axios.post('/auth/logout');
                 this.$reset();
+                useAuthStore().$reset();
             } catch (error) {
                 this.displayErrorMessage(2, 'Logout failed');
             }
@@ -59,14 +44,14 @@ export const useUserStore = defineStore('user', {
             this.message = message;
             setTimeout(() => {
                 this.wait = false;
-            }, 10000);
+            }, 1000);
         },
         async getRooms(): Promise<Room[] | undefined> {
             const { $axios } = useNuxtApp();
             try {
                 const response = await $axios.get('/room', {
                     headers: {
-                        'Authorization': `Bearer ${this.access_token}`
+                        'Authorization': `Bearer ${useAuthStore().access_token}`
                     }
                 });
                 return response.data;
@@ -80,7 +65,7 @@ export const useUserStore = defineStore('user', {
             try {
                 const response = await $axios.post(`/patients/${roomId}`, createPAtientDto ,  {
                     headers: {
-                        'Authorization': `Bearer ${this.access_token}`
+                        'Authorization': `Bearer ${useAuthStore().access_token}`
                     },
                 });
                 console.log(response.data)
@@ -95,7 +80,7 @@ export const useUserStore = defineStore('user', {
             try {
                 const response = await $axios.get('/patients', {
                     headers: {
-                        'Authorization': `Bearer ${this.access_token}`
+                        'Authorization': `Bearer ${useAuthStore().access_token}`
                     }
                 });
                 return response.data;
@@ -109,7 +94,7 @@ export const useUserStore = defineStore('user', {
             try {
                 const response = await $axios.post(`/patients/${patientId}/approve`, {} ,  {
                     headers: {
-                        'Authorization': `Bearer ${this.access_token}`
+                        'Authorization': `Bearer ${useAuthStore().access_token}`
                     },
                 });
                 console.log(response.data)
