@@ -14,9 +14,9 @@ export const useUserStore = defineStore('user', {
         $reset() {
             this.user = {} as User;
         },
-        async loginUser(username: string, password: string, rememberMe : boolean) { 
+        async loginUser(username: string, password: string, rememberMe: boolean) {
             const { $axios } = useNuxtApp();
-            const authUser = useAuthStore()    
+            const authUser = useAuthStore()
             try {
                 this.wait = true;
                 const response = await $axios.post('/auth/login', { username, password });
@@ -59,11 +59,11 @@ export const useUserStore = defineStore('user', {
                 console.error(error);
                 return [];
             }
-        } , 
-        async createPatient (createPAtientDto : CreatePatientDto , roomId : string , bedId : string) {
+        },
+        async createPatient(createPAtientDto: CreatePatientDto, roomId: string, bedId: string) {
             const { $axios } = useNuxtApp();
             try {
-                const response = await $axios.post(`/patients/${roomId}`, createPAtientDto ,  {
+                const response = await $axios.post(`/patients/${roomId}`, createPAtientDto, {
                     headers: {
                         'Authorization': `Bearer ${useAuthStore().access_token}`
                     },
@@ -75,7 +75,7 @@ export const useUserStore = defineStore('user', {
                 return [];
             }
         },
-        async getPatients() : Promise<Patient[] | undefined> {
+        async getPatients(): Promise<Patient[] | undefined> {
             const { $axios } = useNuxtApp();
             try {
                 const response = await $axios.get('/patients', {
@@ -89,10 +89,10 @@ export const useUserStore = defineStore('user', {
                 return [];
             }
         },
-        async acceptPatient (patientId : string) {
+        async acceptPatient(patientId: string) {
             const { $axios } = useNuxtApp();
             try {
-                const response = await $axios.post(`/patients/${patientId}/approve`, {} ,  {
+                const response = await $axios.post(`/patients/${patientId}/approve`, {}, {
                     headers: {
                         'Authorization': `Bearer ${useAuthStore().access_token}`
                     },
@@ -103,6 +103,36 @@ export const useUserStore = defineStore('user', {
                 console.error(error);
             }
         },
+        async getSections() {
+            const { $axios } = useNuxtApp();
+            try {
+                const response = await $axios.get('/section', {
+                    headers: {
+                        'Authorization': `Bearer ${useAuthStore().access_token}`
+                    }
+                });
+                return response.data;
+            } catch (error) {
+                console.error(error);
+            }
+        },
+        async createRoom(id: string, name: string, bedsNum: number) {
+            const { $axios } = useNuxtApp();
+            try {
+                const response = await $axios.post(`/room`, {
+                    sectionId: id,
+                    name,
+                    bedsNum
+                }, {
+                    headers: {
+                        'Authorization': `Bearer ${useAuthStore().access_token}`
+                    },
+                })
+                return response.data
+            } catch (error) {
+                console.log(error)
+            }
+        }
     },
     persist: {
         storage: persistedState.cookiesWithOptions({
