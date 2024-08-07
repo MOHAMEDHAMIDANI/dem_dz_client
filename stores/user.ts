@@ -132,6 +132,20 @@ export const useUserStore = defineStore('user', {
             } catch (error) {
                 console.log(error)
             }
+        },
+        async getPatient(id : string) : Promise<Patient | undefined> {
+            const { $axios } = useNuxtApp();
+            try {
+                const response = await $axios.get(`/patients/${id}`, {
+                    headers: {
+                        'Authorization': `Bearer ${useAuthStore().access_token}`
+                    },
+                })
+                console.log(response.data)
+                return response.data
+            } catch (error) {
+                console.error(error)
+            }
         }
     },
     persist: {
