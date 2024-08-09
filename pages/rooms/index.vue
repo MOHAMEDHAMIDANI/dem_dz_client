@@ -166,8 +166,7 @@ onBeforeMount(async () => {
   console.log(userStore);
   rooms.value = (await userStore.getRooms()) || [];
   sections.value = (await userStore.getSections()) || [];
-  notificationStore.getAllNotifications();
-  notificationStore.getUnread();
+  await notificationStore.getAllNotifications();
 });
 </script>
 

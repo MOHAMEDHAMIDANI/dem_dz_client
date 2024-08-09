@@ -6,21 +6,34 @@ export const useNotificationStore = defineStore('notification', {
         notifications: [] as Notification[],
         unread: 0 as number,
     }),
+    getters : {
+        getNumOfUnRead() {
+            this.unread = this.notifications.filter((n) => !n.isRead).length 
+        }
+    },
     actions: {
-        $reset(){
+        $reset() {
 
         },
         async markAsRead(id: string) {
-            const { $axios } = useNuxtApp()
-            try {
-                const response = await $axios.put(`/notification/${id}/markAsRead`, {
-                    headers: {
-                        'Authorization': `Bearer ${useAuthStore().access_token}`
-                    }
-                })
-                this.getAllNotifications()
-            } catch (error) {
+            const { $axios } = useNuxtApp();
+            const authStore = useAuthStore();
+            const accessToken = authStore.access_token;
 
+            if (!accessToken) {
+                console.error("Access token is missing");
+                return;
+            }
+
+            try {
+                const response = await $axios.patch(`/notification/${id}/markRead`, {}, {
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`
+                    }
+                });
+                await this.getAllNotifications();
+            } catch (error) {
+                console.error(error);
             }
         },
         async getAllNotifications() {
@@ -37,21 +50,6 @@ export const useNotificationStore = defineStore('notification', {
                 console.error(error)
             };
         },
-
-        async getUnread() {
-            const { $axios } = useNuxtApp()
-            try {
-                const response = await $axios.get('/notification/unread', {
-                    headers: {
-                        'Authorization': `Bearer ${useAuthStore().access_token}`
-                    }
-                })
-                console.log(response.data)
-                this.unread = response.data
-            } catch (error) {
-                console.error(error)
-            };
-        }
 
     },
     persist: {

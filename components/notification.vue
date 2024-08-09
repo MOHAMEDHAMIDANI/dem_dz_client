@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="w-full max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow dark:bg-gray-800 dark:text-gray-400" :class="notification.isRead ? 'bg-red-200' : ''"
+      class="w-full shadow-md max-w-xs p-4 m-2 text-gray-500 bg-white rounded-lg  dark:bg-gray-800 dark:text-gray-400" :class="notification.isRead ? 'bg-red-200' : ''"
       role="alert"
       v-for="(notification, index) in notifications"
       :key="notification.id"
@@ -31,7 +31,6 @@
                 class="inline-flex cursor-pointer col-span-2 justify-center w-full px-2 capitalize text-balance py-1.5 text-xs font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800"
                 >mark as read</div>
                 <div v-if="notification.isRead"
-                @click="markAsRead(index)"
                 class="inline-flex col-span-1 justify-center w-full px-2 capitalize text-balance py-1.5 text-xs font-medium text-center text-white bg-emerald-600 rounded-lg cursor-default focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800"
                 >read</div>
           </div>
@@ -55,11 +54,11 @@ socket.on("connect", () => {
   console.log("Connected to WebSocket server");
 });
 
-socket.on("notification", (notification) => {
+socket.on("notification", async (notification) => {
   console.log("New notification:", notification);
   const audio = new Audio("/assets/images/mixkit-happy-bells-notification-937.wav");
   audio.play();
-  getAllNotifications(notification);
+  await getAllNotifications();
 });
 
 socket.on("disconnect", () => {

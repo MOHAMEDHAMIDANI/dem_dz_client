@@ -106,7 +106,6 @@ onBeforeMount(async () => {
     console.log(userStore);
     patients.value = await userStore.getPatients() || [];
     notificationStore.getAllNotifications()
-    notificationStore.getUnread()
 });
 onMounted(() => {
     console.log(userStore);

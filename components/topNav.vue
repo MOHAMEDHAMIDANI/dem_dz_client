@@ -55,33 +55,31 @@
             <div class="w-full h-full max-w-[150px]  flex justify-end items-center mx-5">
                 <div class="w-[50%] h-full flex justify-between items-center mx-1">
                     <div class="w-16 relative group h-full  flex justify-center items-center">
-                        <Icon v-if="ifNotification" name="material-symbols:notifications-unread-outline-rounded"
+                        <Icon v-if="useNotification.unread > 0" name="material-symbols:notifications-unread-outline-rounded"
                             size="30" class="text-mainBlue hover:text-textHover duration-300" />
                         <Icon v-else name="material-symbols:notifications-outline-rounded" size="30"
                             class="text-textGrey hover:text-textHover duration-300" />
-                        <!-- Dropdown menu -->
                         <div id="userDropdown"
-                            class="z-10 hidden  border-white group-hover:flex flex-col absolute top-14 right-2 bg-white divide-y divide-gray-100 rounded-lg shadow w-[300px] max-h-[350px] overflow-auto dark:bg-gray-700 dark:divide-gray-600">
-                            <div class="py-2 text-sm text-gray-700 dark:text-gray-200 flex flex-col gap-2"
+                            class="z-10 hidden bg-white shadow-lg ring-1 ring-black/5  border-white group-hover:flex flex-col absolute top-14 right-2 bg- divide-y divide-gray-100 rounded-lg w-[350px] max-h-[350px] overflow-auto dark:bg-gray-700 dark:divide-gray-600">
+                            <div class="py-2 text-sm text-gray-700 dark:text-gray-200 flex flex-col gap-2 justify-center items-center"
                                 aria-labelledby="avatarButton">
                                     <notification />
 
                             </div>
                         </div>
                     </div>
-                    <div class="w-16 cursor-pointer h-full relative group flex justify-center items-center">
+                    <!-- <div class="w-16 cursor-pointer h-full relative group flex justify-center items-center">
                         <Icon v-if="ifMessage" name="hugeicons:mail-account-02" size="30"
                             class="text-mainBlue hover:text-textHover duration-300" />
                         <Icon v-else name="hugeicons:mail-02" size="30"
                             class="text-textGrey hover:text-textHover duration-300" />
-                        <!-- Dropdown menu -->
                         <div id="userDropdown"
                             class="z-10 hidden  border-white group-hover:flex flex-col absolute top-14 right-2 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                             <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
                                 <div class="font-medium truncate">coming soon</div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <user />
             </div>
@@ -90,10 +88,9 @@
 </template>
 
 <script setup lang="ts">
-const ifNotification = ref(false)
-const ifMessage = ref(false)
 const ifOpen = ref(false)
-const userStore = useUserStore()
+const useNotification = useNotificationStore()
+
 
 </script>
 

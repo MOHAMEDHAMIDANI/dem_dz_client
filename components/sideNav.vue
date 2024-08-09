@@ -150,7 +150,7 @@
               :key="patient.id"
               class="m-1 duration-300 group/item w-[95%] hover:bg-mainBlue h-auto rounded-sm"
             >
-              <nuxt-link to="/" class="w-full">
+              <nuxt-link :to="{name : 'patients-patientsDetails-id' , params : {id : patient.id}}" class="w-full">
                 <div class="w-full h-10 flex items-center px-1">
                   <div class="w-full h-full flex justify-between items-center">
                     <Icon
